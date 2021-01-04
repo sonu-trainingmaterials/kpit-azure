@@ -592,7 +592,133 @@ Azure Active Directory
 		- Secure way of giving access to users on Azure resources.
 		- Provide resource level permission or resource group level permissions.
 			- Provide access on restricted way by assigning roles - reader, VM contributer, Owner
-		
+    - MFA-Multi-Factor Authentication
+        - Typical authentication mechanism is username + password.
+        - Additional authentication mechanisms are also required.
+            - Biometrics
+            - Email code
+            - SMS code
+        - Who you are (username + password)
+        - What you have(Biometrics/SMS/Email)
+        - What you access (Roles/Permissions)
+    - Azure AD pricing
+        - Azure AD Free
+        - Azure AD Premium 
+            - Premium P1
+            - Premium P2
+    - Azure AD Identity Protection
+        - Its a set of tools used to identify and remediate the security risks using some Machine learning algorithms or partner products.
+            - Detect the risks
+            - Prevent risks
+            - remediate 
+        - Identity protection policies:
+            - User risk policy
+                - If the identities are compromised then allow/block access.
+                - Azure AD Premium P2 is required.
+            - Sign-in risk policy
+                - Login attempt from various regions within a short period.            
+                - Azure AD Premium P2 is required.
+            - MFA registration policy
+                - If AAD identifies the login attempt is unfamiliar or its is not from trusted IP then it will ask for MFA.
+                - Azure AD Premium P2 is required.
+                
+Application Gateway
+    - Is a type of Load balancer
+    - Used only for Web applications 
+    - Works on Layer 7 of OSI model (Layer 7 LB)
+    - Works only with HTTP/HTTPS protocols
+    - Features:
+        - Built-in Web Application Firewall (WAF) to detect and prevent security vulnerabilities.
+        - Path based routing 
+        - SSL termination 
+        - Connection Draining
+        - Custom error pages
+        - Redirection 
+    - Components:
+        - Listner : listening to the http requests
+        - WAF : Detect and prevent the request (Optional)
+        - LB Rule: Based on what condition the LB happens.
+        - Http Settings
+    - Pricing tiers:
+        - Standard (AppGW without WAF)
+        - Standard V2 (AppGw without WAF - Version 2)
+        - WAF (AppGW with WAF)
+        - WAF V2 (AppGW with WAF Version 2)
+        
+Traffic Manager
+    - Gloabl Load Balancer
+    - Routing configurations
+    - Load balance across multiple regions
+    - TM route the request to an instance located in various regions based on a routing policy
+        - performance (Latency based)
+        - Priority based 
+        - Weightage based
+        - Geography based
+    
+Azure Monitor
+    - Its a monitoring service offered by Azure for various services.
+    - Azure Monitor is able to collect data from 
+        - Application
+        - Operating Systems
+        - Azure resources
+        - Azure Subscription
+        - Azure AD Tenant
+        - Custom soruces
+    - The data which is collected can be Metric or Log
+        - Metric: the numeric data which is collected is called metric.
+            - CPU utilization
+            - Memory utilization
+            - Disk utilization
+            - No of request in queue
+            - No of Read/Write operations
+            - Represent them in the format of Graph/Chart.
+        - Log: A unstructured text data in JSON/XML format
+            - Event Log
+            - Activity Log
+            - IIS Log
+            - Dignostics Log
+    - Application Insights
+        - Is a monitoring tool for web, storage, functions etc.
+        - You can enable AI while creating the service or after creation.
+        - App Insights collects the telemetry from the web apps, functions, storage accounts etc.
+        - It can visualize it in the form of graph and chart.
+        - It can collect the performance couter data from the application running on Azure or om-premise or other cloud.
+        - Application uses and Instrumentation key to connect the AI.
+        - Live metrics to view the live telemetry of the app such as incoming requests, outgoing responses and server errors
+        - Application Map is used to view and diagnose the dependencies of the app such as storage, sql db, cosmosdb, event hub etc.
+        - Availability test : Url ping test allow us to test the Availability of the app from various regions.
+        
+    - Application Patterns
+        - MVC Patterns
+        - Serverless applications
+        - Microservices
+        - Service Oriented Architecture
+        - Monolithic apps
+        - Contaienrized Apps
+    - Cloud Patterns
+        https://docs.microsoft.com/en-us/azure/architecture/patterns/
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 		
 		
 		
