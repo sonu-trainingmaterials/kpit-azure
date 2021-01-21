@@ -1,0 +1,356 @@
+
+What is Single Page Application?
+    In MPA each request sent by the client from the browser goes to server and load a resource/page to the browser.All web pages are located in server. When the client makes a request by clicking the hyperlink, then the request going to server and loads a page.
+    
+    In SPA a single index page is created with multiple parial pages. When initial reqeust is made to server it loads the entire app to browser. Then for subsequent reqeust it loads the partial pages from the browser memory. No reqeust goes to server other than data loading reqeust.
+    
+What are the frameworks/libraries available for SPA?
+    Angular JS (1.x) (Google)
+    Angular (2.x, 4.0, 5,0, 6,0.... 10.0, 11.x) (Google)
+    React (Facebook)
+    VueJS 
+    EmberJS
+    KnockoutJS
+    BackboneJS
+    
+What is Angular and features?
+    Angular is SPA framework
+        - Component based design.
+        - Angular CLI support
+        - Built-in Two way binding
+        - Built-in Routing
+        - Dependency Injection
+        - Built-in integration with Unit testing and integration testing
+        - Mobile first approach.
+        
+Installing and Configuring Angular
+    - NodeJS 12.x or later
+    - Install angular CLI using 'npm install -g @angular/cli'.
+    - Visual Studio Code
+    
+Angular CLI commands
+    ng new <project-name> [options]
+        - It creates a angular project workspace with a default web application. 
+        - use --create-application=false flag for not to create application.
+        - --minimal flag to ignore testing files.
+
+    ng build [app-name] [options]
+        - Build the application
+        
+    ng serve [app-name] [options]
+        - Run the application
+        - --port to set application port number
+        - --open/-o to opne the browser automatically while running
+        
+    ng test [app-name]
+        - Run all unit tests in the application.
+        
+    ng generate [resource-type] [options]
+        - Create an angular resource such as application, library, component, service, pipe , directive, class, module, interface etc
+        eg:
+            ng generate component   components/about  
+            ng generate service     services/weather
+            ng generate pipe        pipes/default-image
+            ng generate directive   directives/highlight
+            ng generate application myapp
+            ng generate library     mylib
+         
+Angular Module
+    - TypeScript class
+    - decorated with @NgModule
+    - Contains the list of components, pipes, directives, services 
+    - It acts as a container for holding the components, pipes, directives and services
+    - Modules can be imported to other modules.
+    - In every angular app a single root/main module available with name AppModule.
+    - You can create additional feature modules.
+    - NgModule decorator have a declarations section which contains the list of components, pipes and directives.
+    - Providers section in NgModule is used to register the services.
+    - Imports section is used to import the other modules to the Appmodule
+    - bootstrap section defines the top level component of your application.
+    
+Angular application structure
+    - package.json - Contains all meta informations such as project name, version, dependencies, scripts etc
+    - tsconfig.json - Typescript compiler configurations
+    - angular.json - configurations about the project and applications.
+        - index.html
+        - main.ts
+            - AppModule
+                - AppComponent
+        - assets  : Defines the list of static assets and folders
+        - scripts: List of 3rd-party script files 
+        - styles: List of global files and 3rd-party css files path.
+            
+    - src/app : contains all code for the application.
+    
+Interpolation:
+    - Angular uses {{ }} to display the variable data in the template page.
+    - You can write expressions inside it.
+    
+Pipes:
+    - Angular pipes are used to transform the data while printing in template.
+    - Angular supports built-in pipes and custom pipes.
+    - Built-in pipes
+        - uppercase
+        - lowercase
+        - titlecase
+        - number
+        - currency
+        - date
+        - json
+    - Pipes are applied with a pipe symbol (|)
+    - We can chain multiple pipes
+
+Bindings:
+    - Interpolation : one-way binding method used to display variable data in the template using the {{ }}.
+    - Property Binding: 
+        - Used to bind the VALUE to a property of a DOM element. 
+        - We use the [] for property binding.
+        - This is one-way binding (TS -> HTML). Output binding
+    - Event binding: 
+        - Used to bind an event handler FUNCTION to a DOM elements event. 
+        - We use () for event binding.
+        - One way binding (HTML -> TS) , Input binding
+    - Implement two-way data binding by combining the property binding and event binding. Use [( attribute )] to implement two-way binding.
+    
+    
+Directives
+    - A directive is used to change the appearance or behaviour of a DOM element in Angular.
+    - ngClass : apply css style class based on a condition
+    - disabled: enable/disable the element based on a boolean value
+    - click, change : used to attach event handler functions to DOM elements.
+    - Types of directives:
+        - Attribute Directives: Used to change the appearance and behaviour of DOM element.
+            eg: ngClass, ngStyle, disabled, click, change
+        - Structural directive : It is used to change the DOM structure by adding the new elements or removing the existing elements.
+            eg: *ngIf, *ngFor 
+        - Components 
+            
+Components
+    - In angular the UI elements are created as components
+    - TS class decorated with @Component
+    - It has TS file, CSS file, HTML file and Spec.ts testing file.
+    - Every component has a selector which is used by the parent component to call it.
+    - Create components using the 'ng generate component <path/name>' command.
+    
+@Input:
+    - Passing Data from parent component to child component.
+    
+Model
+    - Use interfaces to generate models in Angular
+    - Declare the member variables inside the interface.
+    - use the 'ng generate interface models/employee` command.
+
+Multiple applications
+    - You can create multiple projects within a single project workspace.
+    - The projects types can be :
+        - Application
+            - Web application used to create SPA
+        - Library
+            - Reusable package that can be used in multiple projects.
+            - You can package it as npm package.
+            
+Routing
+    http://localhost:4200/home      -> Home Page (HomeComponent)
+    http://localhost:4200/about     -> About Page (AboutComponent)
+    http://localhost:4200/contact   -> Contact Page (ContactComponent)
+    http://localhost:4200/login     -> Login Page (LoginComponent)
+    http://localhost:4200/register  -> Register Page
+    http://localhost:4200/pet/123   -> PetDetail page(show details of pet with id 123)
+
+    path = "/"        -> HomeComponent
+    path = "/about"   -> AboutComponent
+    path = "/contact" -> ContactComponent
+
+    - Used @angular/router module
+    - Configure the RouterModule in app-routing.module.ts
+    - Define the Routes 
+    - Create hyperlinks using the routerLink directive
+    - Use <router-outlet> directive as place holder.
+    
+Service
+    - Service is a TypeScript class decorated with @Injectable
+    - Service is used to write reusable code within an application.
+    - You can inject the service instances in to the constructor of components , directives , pipes and other services.
+    - Angular will take care of the object creation and scope management.
+    - create services using 'ng generate service <path/name>'
+    
+Custom Pipes
+    - Custom pipes are created with 'ng g pipe <path/name>'
+    - Pipe classes are decorated with @Pipe
+    - Pipe class implements the PipeTransform interface and defines the transform method
+    - Pipe name and Pipe class name can be different
+    
+Life cycle hooks
+    - Every component or directive executes a set of life cycle methods during the inialization and rendering of it.
+    - Component life cycle starts with the execution of constructor.
+    - constructor is not a life cycle method because it is part of JavaScript and not part of Angular.
+    - Angular provides the life cycle methods using a set of interfaces.
+        - ngOnInit() method is provided by OnInit interface
+            - Executed after the constructor. Use this method to initialize the variables and data.
+        - ngOnChanges() method is provided by OnChanges interface
+        - ngOnDestroy() method provided by OnDestroy interface.
+        
+Custom Directive:
+    - Create a directive using the command 'ng g directive <path/name>'
+    - A directive is a TypeScript class decorated with @Directive
+    - We can implement the logic for making changes in the DOM tree or appearance of existing elements.
+
+Forms
+    - Forms in Angular is used to accept data using form controls like textbox, checkbox, radio button etc.
+    - Angular provides built-in support for form validation.
+    - Angular provides two approaches for creating the forms:
+        - Template Driven Forms
+            - Focus is on HTML view
+            - It uses the HTML 5 validations
+            - ngForm and ngModel directives are used 
+            - ngForm is assigned to a form reference variable (#frm)
+            - name attribute and ngModel attribute is used for controls
+        - Reactive Forms
+            - Focus is on TS file.
+            - It uses the Validators class to do the data validation
+            - It uses the services such as FormControl, FormBuilder and FormGroup
+    - Forms services are available from @angular/forms package
+    - Import the FormsModule from @angular/forms to use Template Driven forms
+    - Import the ReactiveFormsModule from @angular/forms to use Reactive Forms.
+        
+Observables and Promises
+    - Observables and Promises are used for Async functions.
+    - Promises:
+        - Built-in feature of JS
+        - Using the request-response pattern
+        - Also supported in Angular.
+        - Promise requests are not cancellable
+        - Automatic Retry is not supported 
+        syntax: myAsyncFunction(args)
+                    .then(
+                        (result)=>{ process success result },
+                        (error) => { process error } 
+                    )
+                eg:
+                sum(2,3)
+                    .then(
+                        (res) => console.log("Sum is" + res),
+                        (err) => console.log("Error in executing sum")
+                    )
+        
+    - Observables:
+        - Available as a third-party library, Need to install rxjs package.
+        - Publish-subscribe pattern is used( Observer pattern)
+        - This is the default pattern used by angular for async functions
+        - Observable requests are cancellable.
+        - Automatically retry when request fails
+        - Observable functions can return promises using toPromise() method
+        syntax: myAsyncFunction(args)
+                    .subscribe(
+                        (result)=>{ process success result },
+                        (error) => { process error } 
+                    )
+                eg:
+                sum(2,3)
+                    .subscribe(
+                        (res) => console.log("Sum is" + res),
+                        (err) => console.log("Error in executing sum")
+                    )
+
+
+Http Client
+    - HttpClientModule is used to perform HTTP REST operation in Angular
+    - HttpClient service which provides functions for performing GET, POST, PUT and DEL operations.
+    - HttpClient methods are async methods that returns Observable objects.
+    - Import HttpClientModule to AppModule.
+    - For angular REST app developement we can use a simple node service called json-server.
+        - Install json server using the command 'npm install -g json-server'
+        
+    - 
+Resolver
+    - It is a routing service used to preload the data while activating a route
+    - It is a service that implements the Resovle interface
+    - This service is configured in the routing module
+    - The Resolver will execute before the route is activated. It helps to preload the data before the component activates.
+    { 
+        path:'edit-pet/:id', 
+        resolve:{
+            petdata:PetDataResolver
+        },
+        component:EditPetComponent
+    }
+    
+Http Interceptor
+    - Is an angular service that intercept any http request which goes out of the angular app.
+    - It takes the request and updates it by adding headers, encoding, validating, compressing etc.
+    - Http Interceptor need to be configured in the App Module
+    - Http Interceptor service class must implement HttpInterceptor interface.
+    
+Guards
+    - Guards are services used to protect the application and data in angular.
+    - eg: You can confirm before exiting from a data entry form.
+    - eg: Ensure the user identity before allowing him/her to view the page.
+    - We can use CanActivate guard and CanDeactivate guard.
+    
+Lazy loading
+    - By default the main module is loaded eagerly when application starts
+    - We can create additional feature modules that can be loaded lazily.
+    - This helps to improve the loading performance of the application initially.
+    - PetStore (10 MB)
+        AppModule (Main Module) (Eager loading) (6MB)
+            - AppComponent
+            - HomeComponent
+            - AboutComponent
+            - ContactComponent
+            - AddPetComponent
+            - EditPetComponent
+            - CardComponent
+            - HighlightDirective
+            - DefaultImagePipe
+            - PetService
+            - PetDataResolver
+            - ConfirmGuard
+            - AuthGuard
+            - HeaderInterceptor
+            - IPet
+        AdminModule (Feature Module) (Lazy loading) (4MB)
+            - AdminLoginComponent
+            - ReportComponent
+            - DashboardComponent
+            - AdminDataService
+            - .....
+    - Create a feature module Admin
+        ng g module admin --route admin --module app.module
+    - create components inside admin module
+        ng g c admin/components/report --module admin.module
+        
+Angular Libraries
+    - Libraries are used for creating reusable functionalities in Angular.
+    - We can create components, pipes, directives, services inside libraries also.
+    - Libraries cannot run independently.
+    - We can use libraries with other web applications 
+    - To create a library we can use the command. 
+        Create an empty project workspace
+            ng new myproject --create-application=false
+        Create the library
+            ng generate library bst-widgets
+    - To create a web application we use 
+        ng generate application my-web-app
+    
+Localization (Internationalization ) (i18n)
+    - A web app can be viewed in different language and culture.
+    - The display language will be changed
+    - The culture (date-time format, currency format etc) will also change based on country and locale. 
+    - Angular pipes can detect the culture(locale) and format the date and currency accordingly.
+    - Display the web site in multiple languages.
+    - Angular support Localization of web site by adding @angular/localize package.
+    - Create multiple translation files for each language and culture
+    - 
+    
+Production build
+    - Build code with "ng build" is not optimized code.
+    - When use the --prod flag the code is build with production ready 
+        - It will bundle and minify the code.
+        - Code is minified - remove the space and comments
+        - Source map file is not created.
+        
+
+
+
+
+    
